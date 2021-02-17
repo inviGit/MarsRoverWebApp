@@ -20,12 +20,6 @@ public class HomeController {
 	private MarsRoverApiServiceInterface service;
 
 	@GetMapping("/")
-	public String getHomeView(ModelMap model) {
-		model.put("poc", "working");
-		return "index.html";
-	}
-
-	@GetMapping("/photo")
 	public String getView(ModelMap model, 
 			HomeDto homeDto) {
 		if(StringUtils.isEmpty(homeDto.getMarsApiRoverData())) {
@@ -43,7 +37,6 @@ public class HomeController {
 		}else {
 			model.put("status", "Number of photos: "+ response.getPhotos().size());	
 		}
-		
 		model.put("roverData", response);
 		model.put("homeDto", homeDto);
 		
